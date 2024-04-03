@@ -93,3 +93,18 @@ DROP DATABASE cuidado_verde_db;
 SELECT * FROM clientes;
 SELECT * FROM empleados;
 SELECT * FROM plantas;
+
+
+-- Analisis Exploratorio -- 
+describe clientes;
+-- Cuantos Clientes existen
+SELECT 'clientes', COUNT(*) as Cantidad from clientes;
+SELECT 'plantas', COUNT(*) as Cantidad from plantas;
+SELECT * FROM clientes;
+SELECT * FROM plantas;
+
+SELECT * FROM InventarioPlantas;
+
+SELECT PlantaID, Cantidad FROM InventarioPlantas WHERE Cantidad < 10;
+
+SELECT P.NombreComun, SUM(I.Cantidad) as Stock FROM plantas AS P JOIN InventarioPlantas AS I ON P.PlantaID = I.PlantaID GROUP BY P.PlantaID ORDER BY Stock ASC;
